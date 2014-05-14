@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = OBJ::VERSION
   spec.authors       = ['Ignacio Contreras Pinilla']
   spec.email         = ['ignacio.con.pin@gmail.com']
-  spec.summary       = %q{Simple OBJ (wavefront) file utils}
+  spec.summary       = %q{Simple OBJ (wavefront model format) file utils}
   spec.description   = %q{}
   spec.homepage      = 'https://github.com/iconpin/obj'
   spec.license       = 'MIT'

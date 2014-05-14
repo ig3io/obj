@@ -1,12 +1,14 @@
 # OBJ
 
-Simple OBJ (wavefront) file utils
+Simple OBJ (wavefront model format) file utils
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'obj'
+```ruby
+gem 'obj'
+```
 
 And then execute:
 

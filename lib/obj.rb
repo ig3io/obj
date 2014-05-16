@@ -22,7 +22,7 @@ module OBJ
           when 'f'
             @faces << 0.0
           when 'mtllib'
-            fail ArgumentError, 'invalid file (mtllib not supported)'
+            # fail ArgumentError, 'invalid file (mtllib not supported)'
           end
         end
       end
@@ -37,8 +37,8 @@ module OBJ
     end
 
     def to_s
-      "<#{self.class} vertices: #{@vertices} normals: #{@normals}" \
-      " text_coords: #{@text_coords} faces: #{@faces}>"
+      "<#{self.class} vertices: #{@vertices.size} normals: #{@normals.size}" \
+      " text_coords: #{@text_coords.size} faces: #{@faces.size}>"
     end
   end
 end

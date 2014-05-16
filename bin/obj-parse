@@ -5,7 +5,7 @@ require 'obj'
 puts "OBJ version #{OBJ::VERSION}"
 file_path = ARGV[0]
 if file_path && File.exist?(file_path)
-  OBJ.parse(file_path)
+  puts OBJ::Mesh.new(file_path)
 else
   puts "Usage: obj-parse <file_path>"
 end

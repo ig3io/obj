@@ -1,40 +1,44 @@
-require "obj/version"
+require 'obj/version'
 
 module OBJ
   class Mesh
     attr_accessor :vertices, :normals, :text_coords, :faces
 
-    def initialize(vertices: 0, normals: 0, text_coords: 0, faces: 0)
-      @vertices = 0
-      @normals = 0
-      @text_coords = 0
-      @faces = 0
+    def initialize(file_path)
+      @vertices = []
+      @normals = []
+      @text_coords = []
+      @faces = []
+
+      File.open(file_path, 'r') do |f|
+        f.each_line do |line|
+          case line.split.first
+          when 'v'
+            @vertices << 0.0
+          when 'vt'
+            @text_coords << 0.0
+          when 'vn'
+            @normals << 0.0
+          when 'f'
+            @faces << 0.0
+          when 'mtllib'
+            fail ArgumentError, 'invalid file (mtllib not supported)'
+          end
+        end
+      end
+    end
+
+    def normals?
+      !@normals.empty?
+    end
+
+    def text_coords?
+      !@text_coords.empty?
     end
 
     def to_s
       "<#{self.class} vertices: #{@vertices} normals: #{@normals}" \
       " text_coords: #{@text_coords} faces: #{@faces}>"
     end
-  end
-
-  def self.parse(file_path)
-    info = Mesh.new
-
-    File.open(file_path, 'r') do |f|
-      f.each_line do |line|
-        case line[0,2]
-        when 'v '
-          info.vertices += 1
-        when 'vt'
-          info.text_coords += 1
-        when 'vn'
-          info.normals += 1
-        when 'f '
-          info.faces += 1
-        end
-      end
-    end
-
-    puts info
   end
 end

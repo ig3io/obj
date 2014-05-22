@@ -53,4 +53,30 @@ class TestMeshParsing < Test::Unit::TestCase
     assert_equal true, @mesh.text_coords?
     assert_equal false, @simple_mesh.text_coords?
   end
+
+  def test_a_vertex
+    vertex = [-0.939205, 0.343331, -0.00428905]
+    assert_equal vertex, @mesh.vertices[10]
+    assert_equal vertex, @simple_mesh.vertices[10]
+  end
+
+  def test_a_normal
+    normal = [-0.939218, 0.157293, -0.305171]
+    assert_equal normal, @mesh.normals[10]
+  end
+
+  def test_a_text_coord
+    text_coord = [0.0048925, 0.217953]
+    assert_equal text_coord, @mesh.text_coords[10]
+  end
+
+  def test_a_face
+    face = [[249, 247, 248], [247, 235, 246], [279, 229, 277]]
+    assert_equal face, @mesh.faces[10]
+  end
+
+  def test_a_simple_face
+    face = [[249], [247], [279]]
+    assert_equal face, @simple_mesh.faces[10]
+  end
 end

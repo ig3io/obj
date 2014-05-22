@@ -1,6 +1,8 @@
 # OBJ
 
-Simple OBJ (wavefront model format) file utils
+Simple OBJ (wavefront model format) file utils.
+
+It currently supports only OBJ files with triangulated faces and only one submesh.
 
 ## Installation
 
@@ -20,7 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
+### Command line
+
     obj-parse <file_path>
+
+### Ruby gem
+
+```ruby
+require 'obj'
+
+obj = OBJ::Mesh.new('my_obj_file.obj')
+
+obj.vertices  # => [[-1.1, 1.1, 0.0], ...]
+obj.normals  # => [[1.0, 0.0, 0.0], ...]
+obj.text_coords # => [[0.0, 0.1], ...]
+obj.faces  # => [[[1, 1, 1], [2, 2, 1], [3, 3, 2]], [...], ...]
+
+obj.normals?  # => true
+obj.text_coords?  # => true
+```
 
 ## Contributing
 

@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'obj'
+
+puts "Ruby OBJ gem version #{OBJ::VERSION}"
+
+subcommand = ARGV[0]
+case subcommand
+when 'parse'
+  Kernel.exec("obj-parse #{ARGV[1]}")
+when 'simplify'
+  Kernel.exec("obj-simplify #{ARGV[1]} #{ARGV[2]}")
+else
+  puts "Usage: obj <subcommand> [options]"
+  puts "Subcommands and options:"
+  puts "  obj parse <input_file>"
+  puts "  obj simplify <input_file> <output_file>"
+end

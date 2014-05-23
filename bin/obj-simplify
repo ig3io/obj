@@ -7,5 +7,5 @@ file_path = ARGV[0]
 if file_path && File.exist?(file_path)
   puts OBJ::Mesh.new(file_path)
 else
-  puts "<file_path> required"
+  puts "<input_path> and <output_path> required"
 end

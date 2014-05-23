@@ -2,10 +2,18 @@
 
 require 'obj'
 
+
 puts "OBJ version #{OBJ::VERSION}"
-file_path = ARGV[0]
-if file_path && File.exist?(file_path)
-  puts OBJ::Mesh.new(file_path)
+input_path = ARGV[0]
+output_path = ARGV[1]
+
+input_ok = !input_path.nil? && File.exist?(input_path)
+output_ok = !output_path.nil? && !File.exist?(output_path)
+
+if input_ok && output_ok
+  old_mesh = OBJ::Mesh::read(input_path)
+  new_mesh = old_mesh.simplify
+  new_mesh.write(output_path)
 else
   puts "<input_path> and <output_path> required"
 end
